@@ -2,14 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("App loaded");
 });
 
-<!-- header.ejs snippet -->
-<div class="hamburger" onclick="toggleMenu()">☰</div>
-<ul class="nav-links" id="navLinks">
-  <li><a href="/">Home</a></li>
-  <li><a href="/itinerary">Itinerary</a></li>
-  <li><a href="/weather">Weather</a></li>
-</ul>
+document.getElementById("worldMap").addEventListener("load", () => {
+  const svgDoc = document.getElementById("worldMap").contentDocument;
+  const countries = svgDoc.querySelectorAll("path");
+
+  countries.forEach(country => {
+    country.addEventListener("click", () => {
+      alert(`You clicked on ${country.id}`);
+      // You can redirect or fetch data here
+    });
+  });
+});
+
 
 function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("active");
 }
+
+document.querySelector(".menu-toggle").addEventListener("click", () => {
+  document.querySelector(".nav-links").classList.toggle("active");
+});
