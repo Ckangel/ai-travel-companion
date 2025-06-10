@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AI Travel Companion</title>
-<link rel="stylesheet" href="public/css/styles.css" />
-</head>
-<body>
-<header>
-    <nav class="navbar">
-        <div class="logo">✈️ AI Travel Companion</div>
-        <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Powered Travel Companion</title>
+    <link rel="stylesheet" href="public/css/styles.css" />
+  </head>
+  <body>
+    <!-- Header & Hero Section -->
+    <header class="hero">
+        <img src="public/images/world-map.jpg" alt="World Map" class="world-map" loading="lazy"/>
+    <div class="hero-content">
+        <h1>Explore the World with AI ✈️</h1>
+        <p>Let AI plan your next adventure.</p>
+        <button id="startJourney" class="btn" type="button">Start Your Journey</button>
+    </div>
+    <!-- Navigation -->
+        <nav class="navbar">
+        <img src="public/images/ait_logo.png" alt="Company Logo" class="logo" loading="lazy"/>
+        <button id="menu-toggle" type="button" aria-label="Toggle navigation">&#9776;</button>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="itinerary.html">Itinerary</a></li>
@@ -20,17 +28,71 @@
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
-    </nav>
+        </nav>
+    </header>
 
-</header>
+    <!-- Main Content -->
+    <main id="mainContent">
+    <!-- Trip Planning Section -->
+    <section class="trip-planning">
+    <div class="trip-preferences">
+        <h2>Plan Your Adventure</h2>
+        <label for="tripType">Trip Type:</label>
+        <select id="tripType">
+            <option value="business">Business</option>
+            <option value="culture">Culture</option>
+            <option value="nature">Nature</option>
+            <option value="adventure">Adventure</option>
+            <option value="relaxation">Relaxation</option>
+        </select>
+        </div>
+        <div class="trip-preferences">
+            <label for="region">Region:</label>
+            <select id="region">
+            <option value="northAmerica">North America</option>
+            <option value="southAmerica">South America</option>
+            <option value="europe">Europe</option>
+            <option value="asia">Asia</option>
+            <option value="africa">Africa</option>
+            <option value="oceania">Oceania</option>
+            <option value="antarctica">Antarctica</option>
+            </select>
+        </div>
+        <button id="generatePlan" type="button">Generate Plan</button>
+    </section>
 
-<main id="mainContent">
-    <object type="image/svg+xml" data="world.svg" id="worldMap"></object>
+    <!-- Map Section -->
+    <section id="mapSection">
+        <h2>Explore by Map</h2>
+        <svg    id="worldMap" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+        <path id="northAmerica" d="M100,100 L200,100 L200,200 L100,200 Z" fill="#ccc"></path>
+        <path id="southAmerica" d="M300,300 L400,300 L400,400 L300,400 Z" fill="#ccc"></path>
+        <path id="europe" d="M500,100 L600,100 L600,200 L500,200 Z" fill="#ccc"></path>
+        <path id="asia" d="M700,100 L800,100 L800,200 L700,200 Z" fill="#ccc"></path>
+        <path id="africa" d="M500,300 L600,300 L600,400 L500,400 Z" fill="#ccc"></path>
+        <path id="oceania" d="M800,300 L900,300 L900,400 L800,400 Z" fill="#ccc"></path>
+        </svg>
+    </section>
 
-    <h1>Welcome to Your Travel Companion</h1>
-    <!-- Dynamic content via JS -->
+    <!-- Itinerary Section -->
+    <section id="results">
+        <h2>Your Suggested Itinerary</h2>
+        <div id="itineraryOutput"></div>
+    </section>
+<div id="chat-container">
+        <div id="chat-header">
+            <h2>AI Travel Assistant</h2>
+        </div>
+        <div id="chat-messages"></div>
+        <div id="chat-input-container">
+            <input type="text" id="chat-input" placeholder="Ask about flights, hotels, or destinations...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
 </main>
-
-<script src="public/js/main.js"></script>
-</body>
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="public/js/landing.js"></script>
+    <script src="public/js/map.js"></script>
+    </body>
 </html>

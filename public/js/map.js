@@ -1,3 +1,10 @@
+document.querySelectorAll("#worldMap path").forEach(region => {
+  region.addEventListener("click", () => {
+    const regionId = region.id.toLowerCase();
+    generateItinerary(regionId, "culture"); // Default trip type
+  });
+});
+
 let map;
 
 function initMap() {

@@ -1,3 +1,7 @@
+document.getElementById("menu-toggle").addEventListener("click", () => {
+  document.getElementById("navbar").classList.toggle("active");
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("App loaded");
 });
@@ -14,7 +18,6 @@ document.getElementById("worldMap").addEventListener("load", () => {
   });
 });
 
-
 function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("active");
 }
@@ -22,3 +25,4 @@ function toggleMenu() {
 document.querySelector(".menu-toggle").addEventListener("click", () => {
   document.querySelector(".nav-links").classList.toggle("active");
 });
+
