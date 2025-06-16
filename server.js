@@ -1,23 +1,4 @@
-const express = require("express");
-const cors = require("cors");
-
-const app = express();
-const PORT = process.env.PORT || 5000;
-
-// Middleware
-app.use(cors());
-app.use(express.json());
-
-// Test Route
-app.get("/", (req, res) => {
-    res.send("AI Travel Companion Server is Running...");
-});
-
-// Start Server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
-
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
@@ -28,8 +9,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const WEATHER_API_KEY = "cd1c4fab525641f3b8e11205250306";
-const GOOGLE_MAPS_API_KEY = "AIzaSyDIJ9XX2ZvRKCJcFRrl-lRanEtFUow4piM";
+// Environment Variables
+const WEATHER_API_KEY = process.env['cd1c4fab525641f3b8e11205250306'];
+const GOOGLE_MAPS_API_KEY = process.env['AIzaSyDIJ9XX2ZvRKCJcFRrl-lRanEtFUow4piM'];
+
+// Test Route
+app.get("/", (req, res) => {
+    res.send("AI Travel Companion Server is Running...");
+});
 
 // Weather API Route
 app.get("/weather", async (req, res) => {
@@ -37,7 +24,7 @@ app.get("/weather", async (req, res) => {
     if (!location) return res.status(400).json({ error: "Location is required" });
 
     try {
-        const response = await axios.get(`https://api.weatherapi.com/v1/current.json?=${cd1c4fab525641f3b8e11205250306}&q=${location}`);
+        const response = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${cd1c4fab525641f3b8e11205250306}&q=${location}`);
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: "Failed to fetch weather data" });
@@ -64,10 +51,3 @@ app.listen(PORT, () => {
 
 // Export the app for testing purposes
 module.exports = app;
-// This is a simple Express server setup with CORS enabled and a test route.
-// It listens on a specified port and responds with a message when the root URL is accessed.
-// The server can be extended with more routes and functionality as needed for the AI Travel Companion application.
-// The server is also set up to be easily testable by exporting the app instance.
-// You can run this server using Node.js and access it via a web browser or API client.
-// To run the server, save this code in a file named `server.js` and execute it using the command:
-// node server.js
