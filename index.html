@@ -1,98 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Powered Travel Companion</title>
-    <link rel="stylesheet" href="public/css/styles.css" />
-  </head>
-  <body>
-    <!-- Header & Hero Section -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered travel companion for itinerary planning, hotel bookings, and travel recommendations">
+    <title>AI Powered Travel Companion | Plan Your Perfect Trip</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
     <header class="hero">
-        <img src="public/images/world-map.jpg" alt="World Map" class="world-map" loading="lazy"/>
-    <div class="hero-content">
-        <h1>Explore the World with AI ✈️</h1>
-        <p>Let AI plan your next adventure.</p>
-        <button id="startJourney" class="btn" type="button">Start Your Journey</button>
-    </div>
-    <!-- Navigation -->
+        <img src="public/images/world-map.jpg" alt="World Map" class="world-map" loading="lazy">
+        <div class="hero-content">
+            <h1>Explore the World✈</h1>
+            <p><strong>Let Us Plan Your Next Adventure!</strong></p>
+            <button id="startJourney" class="btn pulse" type="button">Start Your Journey</button>
+        </div>
+
+        <!-- Navigation -->
         <nav class="navbar">
-        <img src="public/images/ait_logo.png" alt="Company Logo" class="logo" loading="lazy"/>
-        <button id="menu-toggle" type="button" aria-label="Toggle navigation">&#9776;</button>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="itinerary.html">Itinerary</a></li>
-            <li><a href="weather.html">Weather</a></li>
-            <li><a href="places.html">Places</a></li>
-            <li><a href="settings.html">Settings</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+            <div class="nav-item">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><span class="sun-icon">☀️</span><span class="moon-icon">🌙</span></button>
+            </div>
+            <img src="public/images/ait_logo.png" alt="Company Logo" class="logo" loading="lazy">
+            <button id="menu-toggle" type="button" aria-label="Toggle navigation">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#itinerary">Itinerary</a></li>
+                <li><a href="#weather">Weather</a></li>
+                <li><a href="#hotels">Hotels</a></li>
+                <li><a href="#flights">Flights</a></li>
+            </ul>
+            
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main id="mainContent">
-    <!-- Trip Planning Section -->
-    <section class="trip-planning">
-    <div class="trip-preferences">
-        <h2>Plan Your Adventure</h2>
-        <label for="tripType">Trip Type:</label>
-        <select id="tripType">
-            <option value="business">Business</option>
-            <option value="culture">Culture</option>
-            <option value="nature">Nature</option>
-            <option value="adventure">Adventure</option>
-            <option value="relaxation">Relaxation</option>
-        </select>
+    <!-- Image Grid Section -->
+<section class="image-grid-section">
+    <div class="image-grid">
+        <div class="image-card">
+            <img src="public/images/travel1.jpg" alt="Beach vacation" loading="lazy">
+            <div class="image-overlay">
+                <h3>Scenic Tours</h3>
+            </div>
         </div>
-        <div class="trip-preferences">
-            <label for="region">Region:</label>
-            <select id="region">
-            <option value="northAmerica">North America</option>
-            <option value="southAmerica">South America</option>
-            <option value="europe">Europe</option>
-            <option value="asia">Asia</option>
-            <option value="africa">Africa</option>
-            <option value="oceania">Oceania</option>
-            <option value="antarctica">Antarctica</option>
-            </select>
+        <div class="image-card">
+            <img src="public/images/travel2.jpg" alt="Mountain adventure" loading="lazy">
+            <div class="image-overlay">
+                <h3>Cultural Journeys</h3>
+            </div>
         </div>
-        <button id="generatePlan" type="button">Generate Plan</button>
-    </section>
-
-    <!-- Map Section -->
-    <section id="mapSection">
-        <h2>Explore by Map</h2>
-        <svg    id="worldMap" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-        <path id="northAmerica" d="M100,100 L200,100 L200,200 L100,200 Z" fill="#ccc"></path>
-        <path id="southAmerica" d="M300,300 L400,300 L400,400 L300,400 Z" fill="#ccc"></path>
-        <path id="europe" d="M500,100 L600,100 L600,200 L500,200 Z" fill="#ccc"></path>
-        <path id="asia" d="M700,100 L800,100 L800,200 L700,200 Z" fill="#ccc"></path>
-        <path id="africa" d="M500,300 L600,300 L600,400 L500,400 Z" fill="#ccc"></path>
-        <path id="oceania" d="M800,300 L900,300 L900,400 L800,400 Z" fill="#ccc"></path>
-        </svg>
-    </section>
-
-    <!-- Itinerary Section -->
-    <section id="results">
-        <h2>Your Suggested Itinerary</h2>
-        <div id="itineraryOutput"></div>
-    </section>
-<div id="chat-container">
-        <div id="chat-header">
-            <h2>AI Travel Assistant</h2>
+        <div class="image-card">
+            <img src="public/images/travel3.jpg" alt="City tour" loading="lazy">
+            <div class="image-overlay">
+                <h3>City Explorations</h3>
+            </div>
         </div>
-        <div id="chat-messages"></div>
-        <div id="chat-input-container">
-            <input type="text" id="chat-input" placeholder="Ask about flights, hotels, or destinations...">
-            <button id="send-btn">Send</button>
+        <div class="image-card">
+            <img src="public/images/travel4.jpg" alt="Cultural experience" loading="lazy">
+            <div class="image-overlay">
+                <h3>Tropical Getaways</h3>
+            </div>
         </div>
     </div>
-</main>
+</section>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Trip Planning Section -->
+        <section id="home" class="section trip-planning">
+            <h2 class="title has-text-centered">Plan Your Adventure</h2>
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label" for="destination">Destination:</label>
+                        <div class="control">
+                            <input class="input" type="text" id="destination" placeholder="Where do you want to go?">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="tripType">Trip Type:</label>
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select id="tripType">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="business">Business</option>
+                                    <option value="culture">Culture</option>
+                                    <option value="nature">Nature</option>
+                                    <option value="adventure">Adventure</option>
+                                    <option value="relaxation">Relaxation</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="field">
+                        <label class="label" for="region">Region:</label>
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select id="region">
+                                    <option value="" disabled selected>Select a Region</option>
+                                    <option value="northAmerica">North America</option>
+                                    <option value="southAmerica">South America</option>
+                                    <option value="europe">Europe</option>
+                                    <option value="asia">Asia</option>
+                                    <option value="africa">Africa</option>
+                                    <option value="oceania">Oceania</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="field is-grouped is-grouped-centered">
+                        <div class="control">
+                            <button id="generatePlan" class="button is-primary is-medium" type="button">Generate Plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weather Section -->
+        <section id="weather" class="section">
+            <h2 class="title has-text-centered">Destination Weather</h2>
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" type="text" id="weatherLocation" placeholder="Enter city for weather">
+                        </div>
+                        <div class="control">
+                            <button id="getWeather" class="button is-info">Get Weather</button>
+                        </div>
+                    </div>
+                    <div id="weatherResults" class="box has-text-centered fade-in"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Map -->
+<section id="mapSection" class="section">
+    <h2 class="title has-text-centered">Explore by Map</h2>
+    <div class="has-text-centered">
+        <svg id="worldMap" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+            <path id="northAmerica" data-region="North America" d="M100,100 L200,100 L200,200 L100,200 Z" class="map-region"></path>
+            <path id="southAmerica" data-region="South America" d="M300,300 L400,300 L400,400 L300,400 Z" class="map-region"></path>
+            <path id="europe" data-region="Europe" d="M500,100 L600,100 L600,200 L500,200 Z" class="map-region"></path>
+            <path id="asia" data-region="Asia" d="M700,100 L800,100 L800,200 L700,200 Z" class="map-region"></path>
+            <path id="africa" data-region="Africa" d="M500,300 L600,300 L600,400 L500,400 Z" class="map-region"></path>
+            <path id="oceania" data-region="Oceania" d="M800,300 L900,300 L900,400 L800,400 Z" class="map-region"></path>
+        </svg>
+    </div>
+</section>
+
+        <!-- Itinerary Section -->
+        <section id="itinerary" class="section">
+            <h2 class="title has-text-centered">Your Suggested Itinerary</h2>
+            <div id="itineraryOutput" class="container"></div>
+        </section>
+
+        <!-- Add these sections to your main content, after the weather section -->
+
+<!-- Hotels Section -->
+<section id="hotels" class="section">
+    <h2 class="title has-text-centered">Find Hotels</h2>
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <div class="field">
+                <label class="label" for="hotelLocation">Location:</label>
+                <div class="control">
+                    <input class="input" type="text" id="hotelLocation" placeholder="Enter city or hotel name">
+                </div>
+            </div>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label class="label" for="checkInDate">Check-in:</label>
+                        <div class="control">
+                            <input class="input" type="date" id="checkInDate">
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <label class="label" for="checkOutDate">Check-out:</label>
+                        <div class="control">
+                            <input class="input" type="date" id="checkOutDate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="field">
+                <label class="label" for="guests">Guests:</label>
+                <div class="control">
+                    <div class="select is-fullwidth">
+                        <select id="guests">
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5+">5+ Guests</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                    <button id="searchHotels" class="button is-primary">Search Hotels</button>
+                </div>
+            </div>
+            
+            <div id="hotelLoader" class="has-text-centered hidden">
+                <div class="loader"></div>
+                <p>Finding hotels...</p>
+            </div>
+            
+            <div id="hotelResults" class="mt-4"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Flights Section -->
+<section id="flights" class="section">
+    <h2 class="title has-text-centered">Find Flights</h2>
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label class="label" for="flightFrom">From:</label>
+                        <div class="control">
+                            <input class="input" type="text" id="flightFrom" placeholder="City or airport code">
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <label class="label" for="flightTo">To:</label>
+                        <div class="control">
+                            <input class="input" type="text" id="flightTo" placeholder="City or airport code">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label class="label" for="departureDate">Departure:</label>
+                        <div class="control">
+                            <input class="input" type="date" id="departureDate">
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <label class="label" for="returnDate">Return (optional):</label>
+                        <div class="control">
+                            <input class="input" type="date" id="returnDate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label class="label" for="flightClass">Class:</label>
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select id="flightClass">
+                                    <option value="economy">Economy</option>
+                                    <option value="premium">Premium Economy</option>
+                                    <option value="business">Business</option>
+                                    <option value="first">First Class</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <label class="label" for="passengers">Passengers:</label>
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select id="passengers">
+                                    <option value="1">1 Passenger</option>
+                                    <option value="2" selected>2 Passengers</option>
+                                    <option value="3">3 Passengers</option>
+                                    <option value="4">4 Passengers</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                    <button id="searchFlights" class="button is-primary">Search Flights</button>
+                </div>
+            </div>
+            
+            <div id="flightLoader" class="has-text-centered hidden">
+                <div class="loader"></div>
+                <p>Searching flights...</p>
+            </div>
+            
+            <div id="flightResults" class="mt-4"></div>
+        </div>
+    </div>
+</section>
+
+        <!-- Places Section -->
+        <section id="places" class="section">
+            <h2 class="title has-text-centered">Top Attractions Nearby</h2>
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" type="text" id="cityInput" placeholder="Enter a city (e.g. Accra)">
+                        </div>
+                        <div class="control">
+                            <button id="searchBtn" class="button is-info">Search</button>
+                        </div>
+                    </div>
+                    <div id="loader" class="has-text-centered hidden">
+                        <div class="loader"></div>
+                        <p>Loading attractions...</p>
+                    </div>
+                    <div id="placesList" class="columns is-multiline"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Assistant -->
+        <div id="chat-container" class="slide-up">
+            <div id="chat-header">
+                <h3>Travel Assistant</h3>
+                <button id="minimize-chat"><i class="fas fa-minus"></i></button>
+            </div>
+            <div id="chat-messages"></div>
+            <div id="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Ask about flights, hotels, or destinations..." aria-label="Chat input">
+                <button id="send-btn" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button id="open-chat" class="button is-primary is-rounded"><i class="fas fa-comments"></i></button>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                &copy; <span id="year"></span> 💻 Charles K. Ajeigbe | WDD 330 💻 AI Powered Travel Companion
+            </p>
+            <p>
+                Last Update: <span id="last-modified"></span>
+            </p>
+        </div>
+    </footer>
+
     <!-- Scripts -->
-    <script src="app.js"></script>
-    <script src="public/js/landing.js"></script>
+    <script src="public/js/utils.js" type="module"></script>
+    <script src="public/js/api.js" type="module"></script>
+    <script src="public/js/itinerary.js" type="module"></script>
+    <script src="public/js/chat.js" type="module"></script>
+    <script src="public/js/app.js" type="module"></script>
+    <script src="public/js/footer.js"></script>
     <script src="public/js/map.js"></script>
-    </body>
+
+</body>
 </html>
+

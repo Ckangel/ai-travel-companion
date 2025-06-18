@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Powered Travel Companion</title>
+    <link rel="stylesheet" href="public/css/styles.css" />
+  </head>
+  <body>
+    <!-- Header & Hero Section -->
+    <header class="hero">
+        <img src="public/images/world-map.jpg" alt="World Map" class="world-map" loading="lazy"/>
+    <div class="hero-content">
+        <h1>Explore the World with AI ✈️</h1>
+        <p>Let AI plan your next adventure.</p>
+        <button id="startJourney" class="btn" type="button">Start Your Journey</button>
+    </div>
+    <!-- Navigation -->
+        <nav class="navbar">
+        <img src="public/images/ait_logo.png" alt="Company Logo" class="logo" loading="lazy"/>
+        <button id="menu-toggle" type="button" aria-label="Toggle navigation">&#9776;</button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="itinerary.html">Itinerary</a></li>
+            <li><a href="weather.html">Weather</a></li>
+            <li><a href="places.html">Places</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+    </header>
+
+  <!-- Main Content Placeholder -->
+  <div class="container">
+    <h1>Contact us at AI Powered Travel Companion</h1>
+    <p>Use the navigation bar above to explore different sections of the website.</p>
+  </div>
+<!-- Main content of the page -->
+    <header>
+        <div class="logo">
+            <img src="images/ait-logo.png" alt="Travel Companion" width="200">
+        </div>
+            <nav>
+            <button class="hamburger" aria-label="Open Menu">
+              ☰
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="itinerary.html">Our Packages</a></li>
+                <li><a href="checkout.html" class="active">Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Order Fulfilment</h2>
+            <p>Make payment here for Travel Package</p>
+        </section>
+        <section class="checkout-page">
+            <h2>Checkout</h2>
+            <div class="cart-summary">
+                <h2>Order Summary</h2>
+                <ul id="checkout-cart-items" class="cart-items-list">
+                <!-- Cart items will be dynamically added here -->
+                </ul>   
+
+            <div class="cart-total">
+                Total: $<span id="checkout-cart-total">0.00</span>
+            </div>
+            </div>
+            <form id="checkout-form">
+                <h3>SIGN UP TO JOIN OUR LOYALTY PROGRAM</h3>
+                <fieldset>
+                    
+                    <legend>Contact Information</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="contact-name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="contact-email" name="email" required>
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </fieldset>
+                <fieldset>
+                    <legend>Delivery Address</legend>
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+                    <label for="postal-code">Postal Code:</label>
+                    <input type="text" id="postal-code" name="postal-code" required>
+                </fieldset>               <fieldset>
+                    <legend>Payment Information</legend>
+                    <div class="payment-options">
+                    <label>
+                    <input type="radio" name="payment-method" value="card" required>
+                    Card Payment
+                </label>
+                
+                <label>
+                    <input type="radio" name="payment-method" value="bank">
+                    Bank Transfer
+                </label>
+                <div id="bank-transfer-details" class="bank-transfer-details" style="display:none;">
+                    <p>Make your payment directly into our bank account.</p>
+                    <p><strong>Bank:</strong> CAL Bank GH</p>
+                    <p><strong>Account Name:</strong>AI Travel Companion</p>
+                    <p><strong>Account Number:</strong> 112233445500</p>
+                </div>
+                <label>
+                    <input type="radio" name="payment-method" value="mobile-money">
+                    Mobile Money
+                </label>
+                <div id="mobile-money-details" class="mobile-money-details" style="display:none;">
+                    <p>Pay with Mobile Money for faster delivery.</p>
+                    <p><strong>Network:</strong> MTN</p>
+                    <p><strong>Number:</strong> +233559169117</p>
+                </div>
+                </div>
+                </fieldset>
+
+                <button type="submit">Place Order</button>
+            </form>
+
+        </section>
+        </main>
+        <!-- Footer -->
+        <footer>
+            <div class="footer-left">
+                <div class="company-info">
+                    <img src="images/-logo.png" alt="Travel Companion">
+                </div>
+            <div class="contact-info">
+                <p>Address: GN-1249-1666, Mataheko-Afienya, Tema, Ghana</p>
+                <p>Email: support@aitravel.com</p>
+                <p>Phone: +233 24 123 4567</p>
+                <p>&copy; 2025 AI Travel Companion. All Rights Reserved.</p>
+                <p>Office Hours: 24/7 Online. Available country-wide in all Regions of Ghana</p>
+            </div>
+            </div>
+            <div class="footer-right">
+                <a href="https://facebook.com" target="images/facebook-new.png"></a>
+                <a href="https://twitter.com" target="images/twitterx.png"></a>
+                <a href="https://instagram.com" target="images/instagram-new.png"></a>
+            </div>
+        </footer>
+    </body>
+    </html>

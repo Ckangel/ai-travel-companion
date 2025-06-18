@@ -1,3 +1,20 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const regions = document.querySelectorAll(".map-region");
+
+    regions.forEach(region => {
+        region.addEventListener("click", () => {
+            // Remove active class from all regions
+            regions.forEach(r => r.classList.remove("active"));
+
+            // Add active class to clicked region
+            region.classList.add("active");
+
+            // Display selected region
+            alert(`You selected: ${region.dataset.region}`);
+        });
+    });
+});
+
 document.querySelectorAll("#worldMap path").forEach(region => {
   region.addEventListener("click", () => {
     const regionId = region.id.toLowerCase();
