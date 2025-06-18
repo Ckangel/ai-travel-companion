@@ -25,6 +25,50 @@ const DEEPSEEK_API_KEY = 'sk-32286***********************84f1';
       });
       return await response.json();
   }
+
+  const WebServiceClient = require('@maxmind/geoip2-node').WebServiceClient;
+// Typescript:
+// import { WebServiceClient } from '@maxmind/geoip2-node';
+
+// To use the GeoLite2 web service instead of the GeoIP2 web service, set
+// the host to geolite.info, e.g.:
+// new WebServiceClient('1234', 'licenseKey', {host: 'geolite.info'});
+//
+// To use the Sandbox GeoIP2 web service instead of the production GeoIP2
+// web service, set the host to sandbox.maxmind.com, e.g.:
+// new WebServiceClient('1234', 'licenseKey', {host: 'sandbox.maxmind.com'});
+const client = new WebServiceClient('1234', 'licenseKey');
+
+client.country('142.1.1.1').then(response => {
+  console.log(response.country.isoCode); // 'CA'
+});
+
+const WebServiceClient = require('@maxmind/geoip2-node').WebServiceClient;
+// Typescript:
+// import { WebServiceClient } from '@maxmind/geoip2-node';
+
+// To use the GeoLite2 web service instead of the GeoIP2 web service, set
+// the host to geolite.info, e.g.:
+// new WebServiceClient('1234', 'licenseKey', {host: 'geolite.info'});
+const client = new WebServiceClient('1234', 'licenseKey');
+
+client.city('142.1.1.1').then(response => {
+  console.log(response.country.isoCode); // 'CA'
+  console.log(response.postal.code); // 'M5S'
+});
+
+const Reader = require('@maxmind/geoip2-node').Reader;
+// Typescript:
+// import { Reader } from '@maxmind/geoip2-node';
+
+const options = {
+  // you can use options like `cache` or `watchForUpdates`
+};
+
+Reader.open('/usr/local/database.mmdb', options).then(reader => {
+  console.log(reader.country('1.1.1.1'));
+});
+
   ```
 
 
