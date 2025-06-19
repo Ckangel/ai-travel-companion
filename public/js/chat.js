@@ -1,8 +1,3 @@
-// Import the GeoIP2 library
-import { initGeoIP } from './geoip.js';
-// Import the GeoIP initialization function
-import { initGeoIP } from './geoip.js';
-
 // Initialize the chat interface
 export function initChat() {
     const chatContainer = document.getElementById('chat-container');
@@ -95,3 +90,8 @@ export function initChat() {
         }
     }
 }
+
+// Import the GeoIP2 library
+import { initGeoIP } from './geoip.js';
+// Import the GeoIP initialization function
+import { initGeoIP } from './geoip.js';
