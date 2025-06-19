@@ -75,7 +75,10 @@ body {
     height: 100px;
     width: auto;
     transition: transform 0.3s ease;
-    border-radius: 60%;
+    border-radius: 90%;
+    position: absolute;
+    left: 20px;
+    top: 2px;
 }
 
 .nav-links {
