@@ -1,7 +1,7 @@
 // ai-travel-companion/utils/theme.js
 export const initTheme = () => {
   const savedTheme = localStorage.getItem(import.meta.env.VITE_THEME_STORAGE_KEY) || 
-                     import.meta.env.VITE_DEFAULT_THEME;
+  import.meta.env.VITE_DEFAULT_THEME;
   document.documentElement.setAttribute('data-theme', savedTheme);
   return savedTheme;
 };

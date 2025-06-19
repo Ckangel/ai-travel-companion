@@ -1,3 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="Overpass API 0.7.62.7 375dc00a">
+<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
+<meta osm_base="2025-06-18T22:03:24Z"/>
+
+  <bounds minlat="43.4500000" minlon="-22.4100000" maxlat="58.3600000" maxlon="22.2400000"/>
+
+<remark> runtime error: open64: 12 Cannot allocate memory /srv/overpass/db/nodes.bin File_Blocks::read_block::4 </remark>
+
+</osm>
+
+// JavaScript code for interactive map and itinerary generation
 document.addEventListener("DOMContentLoaded", () => {
     const regions = document.querySelectorAll(".map-region");
 

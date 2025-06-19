@@ -1,32 +1,52 @@
-const apiKey = "YOUR_OPENTRIPMAP_API_KEY";
+const axios = require('axios');
+const getAmadeusToken = require('./auth');
 
-document.getElementById("searchBtn").addEventListener("click", () => {
-const city = document.getElementById("cityInput").value;
-if (!city) return;
+const searchFlights = async (origin, destination, date) => {
+  const token = await getAmadeusToken();
+  if (!token) throw new Error("Failed to authenticate with Amadeus.");
 
-document.getElementById("loader").classList.remove("hidden");
-document.getElementById("placesList").innerHTML = "";
+  try {
+    const response = await axios.get(
+      'https://test.api.amadeus.com/v2/shopping/flight-offers',
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        params: {
+          originLocationCode: origin,
+          destinationLocationCode: destination,
+          departureDate: date,
+          adults: 1,
+        },
+      }
+    );
+    return response.data.data; // Array of flight offers
+  } catch (error) {
+    console.error("Flight search failed:", error.response?.data);
+    return [];
+  }
+};
 
-fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${city}&apikey=${apiKey}`)
-    .then(res => res.json())
-    .then(loc => {
-    return fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=5000&lon=${loc.lon}&lat=${loc.lat}&rate=2&format=json&limit=5&apikey=${apiKey}`);
-    })
-    .then(res => res.json())
-    .then(places => {
-    const list = document.getElementById("placesList");
-    places.forEach(place => {
-        const item = document.createElement("div");
-        item.innerHTML = `<h3>${place.name}</h3><p>${place.kinds}</p>`;
-        list.appendChild(item);
-    });
-    })
-    .catch(err => {
-    console.error("OpenTripMap error:", err);
-    document.getElementById("placesList").innerText = "Failed to load places.";
-    })
-    .finally(() => {
-    document.getElementById("loader").classList.add("hidden");
-    });
+// Example usage:
+searchFlights('NYC', 'LON', '2025-07-01').then(flights => {
+  console.log("Found flights:", flights);
 });
+
+
+*Sample Response:*
+json
+[
+  {
+    "price": { "total": "450.00", "currency": "USD" },
+    "itineraries": [
+      {
+        "segments": [
+          {
+            "departure": { "iataCode": "JFK", "at": "2025-07-01T08:00:00" },
+            "arrival": { "iataCode": "LHR", "at": "2025-07-01T20:00:00" }
+          }
+        ]
+      }
+    ]
+  }
+]
+---
 

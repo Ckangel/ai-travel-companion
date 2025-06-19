@@ -9,10 +9,6 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Environment Variables
-const WEATHER_API_KEY = process.env['cd1c4fab525641f3b8e11205250306'];
-const GOOGLE_MAPS_API_KEY = process.env['AIzaSyDIJ9XX2ZvRKCJcFRrl-lRanEtFUow4piM'];
-
 // Test Route
 app.get("/", (req, res) => {
     res.send("AI Travel Companion Server is Running...");
@@ -47,6 +43,31 @@ app.get("/geocode", async (req, res) => {
 // Start Server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
+});
+
+const express = require('express');
+const { searchFlights, searchHotels } = require('./amadeus');
+require('dotenv').config();
+
+const app = express();
+app.use(express.json());
+
+// Flight search endpoint
+app.get('/api/flights', async (req, res) => {
+  const { origin, destination, date } = req.query;
+  const flights = await searchFlights(origin, destination, date);
+  res.json(flights);
+});
+
+// Hotel search endpoint
+app.get('/api/hotels', async (req, res) => {
+  const { city, checkIn, checkOut } = req.query;
+  const hotels = await searchHotels(city, checkIn, checkOut);
+  res.json(hotels);
+});
+
+app.listen(3000, () => {
+  console.log('Travel Companion API running on http://localhost:3000');
 });
 
 // Export the app for testing purposes

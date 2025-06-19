@@ -1,7 +1,4 @@
-const DEEPSEEK_API_KEY = 'sk-32286***********************84f1';
-  const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1';
-
-  export async function getDeepSeekTravelRecommendations(query) {
+export async function getDeepSeekTravelRecommendations(query) {
       const response = await fetch(`${DEEPSEEK_API_URL}/travel`, {
           method: 'POST',
           headers: {
@@ -68,6 +65,26 @@ const options = {
 Reader.open('/usr/local/database.mmdb', options).then(reader => {
   console.log(reader.country('1.1.1.1'));
 });
+
+// Please install OpenAI SDK first: `npm install openai`
+
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+        baseURL: 'https://api.deepseek.com',
+        apiKey: '<DeepSeek API Key>'
+});
+
+async function main() {
+  const completion = await openai.chat.completions.create({
+    messages: [{ role: "system", content: "You are a helpful assistant." }],
+    model: "deepseek-chat",
+  });
+
+  console.log(completion.choices[0].message.content);
+}
+
+main();
 
   ```
 
