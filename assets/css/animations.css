@@ -1,0 +1,28 @@
+/* Card hover effect */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Theme transition */
+:root {
+  --transition-duration: 0.4s;
+}
+
+[data-theme] {
+  transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
